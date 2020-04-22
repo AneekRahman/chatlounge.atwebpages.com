@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    
+        <title>Aneek's Chatroom</title>
+        <link href="chatroom.css" type="text/css" rel="stylesheet">
+        <link href="messagebox.css" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script
+  src="https://code.jquery.com/jquery-1.5.min.js"
+  integrity="sha256-IpJ49qnBwn/FW+xQ8GVI/mTCYp9Z9GLVDKwo5lu5OoM="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+        
+        <div id='chatBigWrap'>
+        
+            <h1 id='welcomeT'>Welcome, <span id='name'></span>
+            <i class="material-icons" id='widgetsIcon'>apps</i></h1>
+            
+            <div id='messageBox'>
+            
+                
+            
+            </div>
+            
+            <div id='bottomBar'>
+            
+                <input type="text" id="messageIn" placeholder="Enter message">
+                
+                <i class="material-icons" id='sendBtn'>send</i>
+            
+            </div>
+        
+        </div>
+
+        <div id='widgetsWrap'>
+            
+            <div id='widOverlay'></div>
+
+            <div id='widgetsCon'>
+                
+                <i class="material-icons" id='closeWidg'>close</i>
+
+                <div id='dpholder'></div>
+                
+                <div id='allMemberBtn'>
+                
+                    <p>All Members</p> 
+                    
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    
+                </div>
+
+                <div id='logout'>
+                    
+                    <p>Logout</p> 
+                    <i class="material-icons">power_settings_new</i>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div id='allMemWrap'>
+        
+            <div id='allMemOver'></div>
+                        
+            <i class="material-icons" id='allMemClose'>arrow_back</i>
+            
+            <div id='allMemHolder'>
+            
+                
+            
+            </div>
+        
+        </div>
+
+        <script>
+            
+            $(document).ready(function(){
+                
+                $.get('returnname.php', function(res){
+
+
+                    if(res != "404"){
+
+                        $('#name').text(res);
+
+                    }else{
+
+                        window.location = 'index.html';
+
+                    }
+
+                })
+
+                $.get('returndp.php', function(res){
+
+                    $('#dpholder').css({'background-image' : 'url(' + res + ')'})
+
+                })       
+                
+                
+                
+                
+
+                $('#widgetsIcon').click(function(){
+
+                    $('#widOverlay').css({'opacity' : '0'})
+
+                    $('#widgetsWrap').css({'display' : 'block','opacity' : '1'})
+
+                    $('#widOverlay').animate({'opacity' : '1'}, 200)
+
+                    $('#widgetsCon').animate({'right' : '0'}, 200)
+
+                })
+
+                $('#widOverlay, #closeWidg').click(function(){
+
+                    $('#widgetsWrap').animate({'opacity' : '0'}, 200, function(){
+
+                        $(this).css({'display' : 'none'})
+
+                        $('#widgetsCon').css({'right' : '-85%'})
+
+                    })
+
+                })
+                
+                $('#allMemberBtn').click(function(){
+
+                    $('#allMemOver').css({'opacity' : '0'})
+
+                    $('#allMemWrap').css({'display' : 'block','opacity' : '1'})
+
+                    $('#allMemOver').animate({'opacity' : '1'}, 200)
+
+                    $('#allMemHolder').animate({'right' : '0'}, 200)
+
+                    $.ajax({
+
+                        url: 'showall.php',
+                        method: 'post',
+                        cache: true,
+                        data: false,
+                        success: function(res){
+
+                            $("#allMemHolder").html(res);
+
+                        }
+
+                    })
+
+                })
+                
+                $('#allMemClose, #allMemOver').click(function(){
+                    
+                    $("#allMemWrap").animate({'opacity' : '0'}, 200, function(){
+
+                        $(this).css({'display' : 'none'})
+                        
+                        $('#allMemHolder').css({'right' : '-85%'})
+
+                    })
+                    
+                })
+
+                
+                
+                
+
+                $('#logout').click(function(){
+
+                    $.ajax({
+
+                        url: 'logout.php',
+                        data: false,
+                        cache: false,
+                        method: 'POST',
+                        success: function(res){
+
+                            if(res == 'reload'){
+
+                                window.location = 'index.html';
+
+                            }
+
+                        }
+
+                    })
+
+                })
+
+
+                $("#sendBtn").click(function(){
+
+                    var msg = $("#messageIn").val();
+                    
+                    setTimeout(reloadMsgBox, 100)
+
+                    if(msg == "/clear"){
+
+                        $.get("clear.php", function(res){
+
+                            if(res == "reload"){
+
+                                reloadMsgBox();
+
+                            }
+
+                        })
+
+                    }else{
+
+                        $.post("croom_msg_send.php", {msg: msg}, function(res){
+
+                            if(res == "reload"){
+
+                                reloadMsgBox();
+
+                            }
+
+                        })
+
+                    }
+
+                    $("#messageIn").val("")
+
+                })
+
+                reloadMsgBox();
+                
+                var oldHeight = $("#messageBox").attr("scrollHeight")
+                
+                function reloadMsgBox(){                    
+                                                            
+                    $.ajax({
+
+                        url: 'chats/common_room.txt',
+                        method: 'post',
+                        cache: false,
+                        success: function(res){
+
+                            $("#messageBox").html(res);
+
+                        }
+                        
+                    })
+                    
+                    var newHeight = $("#messageBox").attr("scrollHeight");
+                    
+                    var diff = newHeight - oldHeight;
+                    
+                    if(diff > 0){
+                        
+                        $("#messageBox").animate({ scrollTop: newHeight }, 'fast');
+
+                        oldHeight = newHeight;
+                
+                    }
+
+                }
+
+
+                setInterval(reloadMsgBox, 1000);
+                
+               
+                
+            }) // End of document ready
+        
+            
+            
+            
+        
+        </script>
+        
+    </body>
+    
+</html>

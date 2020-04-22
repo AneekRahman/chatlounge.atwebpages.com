@@ -1,0 +1,306 @@
+*{box-sizing: border-box}
+
+body{
+    
+    margin: 0; 
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    max-width: 40em;
+    
+}
+
+#chatBigWrap{
+    
+    margin: .5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 9px #cccccc;
+    
+}
+
+#welcomeT{
+    
+    margin: 0;
+    padding: .8em 1em;
+    font-size: 1em;
+    font-weight: 200;
+    font-family: roboto;
+    background-color: #fff;
+    position: relative;
+    
+}
+
+#welcomeT span{
+
+    font-weight: 400;
+
+}
+
+#widgetsIcon{
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: .4em .5em;
+    cursor: pointer;
+    
+}
+
+#messageBox{
+    
+    flex: 1;
+    background-color: #e5e5e5;
+    padding: 1em .8em;
+    font-family: roboto, sans-serif;
+    overflow-y: auto;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-position: center;
+    
+}
+
+#bottomBar{
+    
+    padding: .6em 1em;
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+#messageIn{
+    
+    flex: 1;
+    margin-right: .8em;
+    border: none;
+    font-size: 1em;
+    border-bottom: 1px solid #898989;
+    outline: none;
+    padding: .3em;
+    font-family: roboto, arial;
+    
+}
+
+#messageIn:focus{
+    
+    border-bottom: 1px solid #0085ba;
+    
+}
+
+#sendBtn{
+    
+    font-size: 1.8em;
+    color: #0083ff;
+    cursor: pointer;
+    
+}
+
+#sendBtn i{
+    
+    font-size: 1.1em
+    
+}
+
+#widgetsWrap{
+    
+    display: none;
+    
+}
+
+#closeWidg, #allMemClose{
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin:  .4em .5em;
+    font-size: 2em;
+    cursor: pointer;
+    
+}
+
+#widOverlay, #allMemOver{
+    
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    
+}
+
+#allMemOver{
+    
+    z-index: 100;
+    
+}
+
+#widgetsCon{
+    
+    width: 85%;
+    height: 100%;
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    padding: .5em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    right: -85%;
+    
+}
+
+#allMemWrap{
+    
+    display: none;
+    
+}
+
+#allMemHolder{
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 300;
+    padding: 3.5em 1em 1em 1em;
+    right: -85%;
+    overflow-y: auto;
+    
+}
+
+#allMemClose{
+    
+    z-index: 400;
+    cursor: pointer;
+    
+}
+
+#logout, #allMemberBtn{
+    
+    display: flex;
+    height: 3em;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    
+}
+
+#logout p, #allMemberBtn p{
+    
+    margin: 0 .2em 0 0;
+    font-family: arial;
+    font-size: 1.3em;
+    
+}
+
+#allMemberBtn p{
+    
+    margin: 0;
+    
+}
+
+#allMemberBtn{
+    
+    margin-bottom: .5em;
+    background-color: #1c8dff;
+    font-size: 1.03em;
+    
+}
+
+#allMemberBtn i{
+    
+    font-size: 2em;
+    position: relative;
+    margin-right: -1em;
+    
+}
+
+#logout i{
+    
+    margin-right: -.5em
+    
+}
+
+#dpholder{
+    
+    width: 8em;
+    height: 8em;
+    background-color: #ccc;
+    margin: auto;
+    border-radius: 100%;
+    background-size: 100%;
+    background-position: center;
+    
+}
+
+.bigName{
+    
+    display: inline-block;
+    margin: .4em;
+    width: calc(50% - 1em);
+    
+}
+
+.nameCard{
+    
+    height: 8em;
+    background-color: #eee;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 2px 5px #919191;
+    
+}
+
+.nameCard div{
+    
+    width: 5em;
+    height: 5em;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    border-radius: 100%;
+    
+}
+
+.nameCard p{
+    
+    margin: 0 0 .6em;
+    font-family: roboto, arial;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

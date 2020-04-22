@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<!-- THESE ARE ANEEK RAHMAN's WRITTEN CODES, ALL RIGHTS RESERVED -->
+
+<html>
+
+    <head>
+    
+        <title>Aneek' Chatroom</title>
+        <link href="index.css" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    
+    </head>
+    
+    <body>
+        
+        <script>
+        
+            $.ajax({
+
+                url: 'cookiecheck.php',
+                method: 'POST',
+                data: false,
+                cache: false,
+                success: function(res){
+
+                    if(res == 5928){
+
+                        window.location = 'chatroom.html';
+
+                    }
+
+                }
+
+            })
+        
+        </script>
+        
+        <div id='errorBox'>
+        
+            <p id='error'></p>
+        
+        </div>
+        
+        <div id='loginBigWrap'>
+        
+            <div id='logWrap'>
+            
+                <label for="logName">Username:</label>
+                
+                <input type="text" id="logName" autocorrect="off" autocapitalize="none">
+                
+                <label for="logPass">Password:</label>
+                
+                <input type="password" id='logPass' autocorrect="off" autocapitalize="none">
+                
+                <div id='logBottom'>
+                
+                    <label class="container">Remember Me
+
+                        <input type="checkbox" id='remember'>
+                        <span class="checkmark"></span>
+
+                    </label>
+                                        
+                    <button id='logSubmit'>Login</button>
+                
+                </div>
+            
+            </div>
+        
+        </div>
+        
+        <script>
+        
+            var ckbox = $('#remember');
+            var checked = 0;
+
+            $('input').on('click',function () {
+                if (ckbox.is(':checked')) {
+                    
+                    checked = 1;
+
+                } else {
+                    
+                    checked = 0;
+
+                }
+            });
+            
+
+            $('#logSubmit').click(function(){
+
+                var logName = $('#logName').val();
+                var logPass = $('#logPass').val();
+
+                
+                $.post('login.php',{logName : logName, logPass : logPass, checked : checked}, function(res){
+
+
+
+                    if(logName != '' && logPass != '' && logName != ' ' && logPass != ' '){
+
+
+                        if(res == 1349){
+                            
+                            $('#errorBox').css({'display' : 'none'});
+                            window.location = 'chatroom.html';
+
+                        }else{
+
+                            $('#errorBox').css({'display' : 'block'});
+                            $('#error').text(res)
+
+                        }
+
+                    }else{
+
+                            $('#errorBox').css({'display' : 'block'});
+                            $('#error').text('Enter a username and a password');
+
+                    }
+
+
+                })
+
+            })
+        
+        </script>
+    
+        <p id='copyR'> Copyright 2018 Aneek Rahman, All rights reserved. </p>
+        
+    </body>
+
+</html>

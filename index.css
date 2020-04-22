@@ -1,0 +1,214 @@
+*{
+    
+    box-sizing: border-box;
+    
+}
+body{
+    
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #303030;
+
+}
+
+a{
+    
+    text-decoration: none;
+    color: inherit;
+    
+}
+
+#loglogo{
+    
+    padding: .4em;
+    position: absolute;
+    top: 0;
+    margin-top: 1em;ß
+
+    
+}
+
+#loglogo h1{
+    
+    margin: 0;
+    font-size: 2em;
+    color: #fff;
+    letter-spacing: .1em;
+    font-family: arial;
+    
+}
+
+#loginBigWrap{
+    
+    margin-top: 1em;
+    padding: 1.5em 2em;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px
+    
+}
+
+#logWrap label{
+    
+    font-size: 1em;
+    color: #72777c;
+    font-weight: 400;
+    display: block;
+    
+}
+
+#logWrap input{
+    
+    width: 100%;
+    font-size: 1.3em;
+    padding: .25em .3em;
+    margin: .4em 0;
+    background-color: #fbfbfb;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+    border: 1px solid #ddd;
+    outline: none;
+    transition: .3s;
+    
+}
+
+#logWrap input:focus{
+    
+    border: 1px solid #006cd6
+    
+}
+
+#logBottom{
+    
+    display: flex;
+    justify-content: space-between;;
+    align-items: center;
+    margin-top: 1em;
+    
+}
+
+
+#logSubmit{
+    
+    background-color: #0085ba;
+    border: 1px solid;
+    border-color: #0073aa #006799 #006799;
+    color: #fff;
+    text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+    box-shadow: 0 1px 0 #006799;
+    padding: .3em 1em;
+    border-radius: 2px;
+    font-family: arial;
+    font-size: 1em;
+    font-weight: 600;
+    outline: none;
+    
+}
+
+#logSubmit:active{
+    
+    background-color: #005d84;
+    
+}
+
+#errorBox{
+    
+    width: 70%;
+    max-width: 300px;
+    border-left: 5px solid #ef2f2f;
+    display: none;
+    background-color: #fff;
+    
+}
+
+#error{
+    
+    margin: 0;
+    border-left: none;
+    padding: .5em;
+    font-family: arial;
+    font-weight: 400;
+    text-align: center;
+    
+}
+
+#rememberMe{
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important
+    
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#copyR{
+
+margin-top: 3em;
+
+}
+
+
